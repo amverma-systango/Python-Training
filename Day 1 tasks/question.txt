@@ -2,3 +2,4 @@
 
 Q.1 whats the actual difference between python 2 and python 3.
 Q.2 why we needed python 3? why not we updated python 2 to the extent of python 3.
+Q.3 what is more about pass statement.
