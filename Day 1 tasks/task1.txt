@@ -1,0 +1,96 @@
+Python is an interpreted, object-oriented, high-level programming language with dynamic semantics.
+
+
+##################################################################################################
+
+python 2 vs python 3
+
+
+Year of Release
+
+python 2
+	Year of Release	Python 2 was released in the year 2000.	
+python 3
+	Python 3 was released in the year 2008.
+
+
+-----------------------------------------------------------
+
+“Print” Keyword
+
+python 2
+	In Python 2, print is considered to be a statement and not a function.
+
+python 3
+	In Python 3, print is considered to be a function and not a statement. So print does return number of character it had printed on the screen
+
+-----------------------------------------------------------
+
+Storage of Strings
+
+
+python 2
+	In Python 2, strings are stored as ASCII by default.
+
+python 3
+	In Python 3, strings are stored as UNICODE by default.
+
+-----------------------------------------------------------
+
+Division of Integers
+
+
+python 2
+	On the division of two integers, we get an integral value in Python 2. For instance, 7/2 yields 3 in Python 2.
+
+
+python 3
+	On the division of two integers, we get a floating-point value in Python 3. For instance, 7/2 yields 3.5 in Python 3.
+
+-----------------------------------------------------------
+
+Exceptions
+
+python 2
+	In Python 2, exceptions are enclosed in notations.
+
+
+python 3
+	In Python 3, exceptions are enclosed in parentheses.
+
+-----------------------------------------------------------
+
+Variable leakage
+
+python 2
+	The values of global variables do change in Python 2 if they are used inside a for-loop.
+
+python 3
+	The value of variables never changes in Python 3.
+
+-----------------------------------------------------------
+
+Iteration	
+
+
+python 2
+	In Python 2, the xrange() function has been defined for iterations.
+
+
+python 3
+	In Python 3, the new Range() function was introduced to perform iterations.
+
+-----------------------------------------------------------
+
+Usage in today’s times
+
+
+python 2
+	Python 2 is no longer in use since 2020.
+
+
+python 3
+	Python 3 is more popular than Python 2 and is still in use in today’s times.
+
+-----------------------------------------------------------
+referance - https://www.interviewbit.com/blog/difference-between-python-2-and-3/#:~:text=Python%202%20has%20more%20complicated,syntax%20compared%20to%20Python%202.&text=A%20lot%20of%20libraries%20of,strictly%20used%20with%20Python%203.
