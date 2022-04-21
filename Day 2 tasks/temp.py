@@ -1,7 +1,7 @@
 # template
-#20) Python List
-#21) Python Tuple
-#22) Python String
+#Done 20) Python List
+#Done 21) Python Tuple
+#Done 22) Python String
 #23) Python Set
 #24) Python Dictionary
 #25) Python File Operation
