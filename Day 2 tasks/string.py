@@ -67,7 +67,7 @@ print("this is a {} string and {} can see it".format("formated","you"))
 
 print("this is a {1} string and {0} can see it. order changed lol".format("formated","you"))
 
-#---------------------------------------------
+#----------------------------------------------
 print("\n")
 #---------------------------------------------
 
