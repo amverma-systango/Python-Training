@@ -3,9 +3,9 @@
 #Done 21) Python Tuple
 #Done 22) Python String
 #Done 23) Python Set
-#24) Python Dictionary
-#25) Python File Operation
-#26) Python Directory
+#Done 24) Python Dictionary
+#Done 25) Python File Operation
+#Done 26) Python Directory
 #27) Python Exception
 #28) Exception Handling
 #29) User-defined Exception
