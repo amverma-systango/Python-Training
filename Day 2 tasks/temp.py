@@ -6,8 +6,8 @@
 #Done 24) Python Dictionary
 #Done 25) Python File Operation
 #Done 26) Python Directory
-#27) Python Exception
-#28) Exception Handling
+#Done 27) Python Exception
+#Done 28) Exception Handling
 #29) User-defined Exception
 #30) Python Namespace
 #31) Python Class
