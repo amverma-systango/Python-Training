@@ -1,0 +1,4 @@
+Q. asgi and wsgi kya h
+
+Done Q. ye aap kyu bana padta h, (as oppose to flask m sari cheeze directly chlati h)
+
