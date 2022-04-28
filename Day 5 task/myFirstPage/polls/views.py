@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.generic import View, TemplateView, CreateView
 from django.contrib.auth.views import LoginView
@@ -56,6 +56,8 @@ class Signup(TemplateView):
         if( len(user) == 0 ):
             createUser = User( user_name = userNameInp, user_password = userPasswordInp)
             createUser.save()
+
+            return redirect("/login")
         else:
             return HttpResponse("username unavailable please try again")
 
