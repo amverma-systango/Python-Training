@@ -23,8 +23,23 @@ class Login(LoginView):
     
     
 
-    # def post(self, request):
-    #     pass
+    def post(self, request):
+        userNameInp = request.POST['nameInp']
+        userPasswordInp = request.POST['passwordInp']
+
+        user = User.objects.filter( user_name = userNameInp )
+
+        if( len(user) != 0 ):   
+            request.session["userId"] = user.id
+            request.session["userLoginStatus"] = "LoggedIn"
+
+            
+
+            return redirect("/login/{}".format(user.id))
+            
+        else:
+            return HttpResponse("wrong credential")
+
 
 
 
@@ -60,5 +75,31 @@ class Signup(TemplateView):
             return redirect("/login")
         else:
             return HttpResponse("username unavailable please try again")
+
+
+
+
+class Home(TemplateView):
+    http_method_names = ['get', 'post']
+    template_name = "polls/signup.html"
+    
+    
+    def get(self, request):
+        
+   
+        user = User.objects.filter()
+
+    
+        if( len(user) == 0 ):
+            createUser = User( user_name = userNameInp, user_password = userPasswordInp)
+            createUser.save()
+
+            return redirect("/login")
+        else:
+            return HttpResponse("username unavailable please try again")
+
+
+
+
 
 

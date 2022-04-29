@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Polls</title>
+
+    <style>
+        body{
+            height: 100vh;
+            width: 100vw;
+            background-image: linear-gradient(45deg, #84fab0, #8fd3f4);
+            /* background-color: rgb(241, 241, 241); */
+        }
+
+        .parent-box{
+            /* color: white; */
+            height: 100vh;
+            width: 100vw;
+            /* background-color: tomato; */
+        }
+
+        .box{
+            border-radius: 10px;
+            height: 100%;
+        }
+
+        #left-box{
+            background-color: white;
+        }
+
+        #right-box{
+            background-color: white;
+        }
+
+        #questionCards{
+            color: #8fd3f4;
+        }
+
+        
+    </style>
+
+  </head>
+  <body class="d-flex justify-content-center align-items-center">
+    <div class="parent-box d-flex flex-column flex-md-row justify-content-md-evenly p-2">
+        <div class="box col-12 col-md-5 px-2" id="left-box">
+
+            <div class="questionCards card my-2 p-2">
+                <p> some qustion here </p>
+            </div>
+            <div class="questionCards card my-2 p-2">
+                <p> some qustion here </p>
+            </div>
+
+        </div>        
+        <div class="box col-12 col-md-5 p-2" id="right-box">
+
+            <h3>Add a poll</h3>
+            <form action="" class="col-12">
+                <textarea name="" id="" rows="5" class="col-12"></textarea>
+                
+                <label for="option1">option 1 text</label>
+                <input type="text" id="option1" class="col-12">
+
+                <label for="option2">option 2 text</label>
+                <input type="text" id="option2" class="col-12">
+
+                <label for="option3">option 3 text</label>
+                <input type="text" id="option3" class="col-12">
+
+                <label for="option4">option 4 text</label>
+                <input type="text" id="option4" class="col-12">
+                
+                <input type="submit" class="btn btn-success mt-2">
+            </form>
+        </div>        
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
