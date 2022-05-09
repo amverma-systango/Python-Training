@@ -80,21 +80,23 @@ class Signup(TemplateView):
 
 
 class Home(TemplateView):
-    http_method_names = ['get', 'post']
+    http_method_names = ['get']
     template_name = "polls/signup.html"
     
     
     def get(self, request):
         
-   
-        user = User.objects.filter()
+        print(request.session["userId"])
+        user = User.objects.filter(id = request.session["userId"] ).first()
 
     
         if( len(user) == 0 ):
             createUser = User( user_name = userNameInp, user_password = userPasswordInp)
             createUser.save()
 
-            return redirect("/login")
+            # return redirect("/login")
+            return HttpResponse("home")
+
         else:
             return HttpResponse("username unavailable please try again")
 
