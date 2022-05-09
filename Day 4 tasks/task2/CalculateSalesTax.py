@@ -4,7 +4,16 @@ import os
 
 
 class STC:
+    '''
+        the class contain all the required function to calculate the
+        salse tax.
 
+        1. first you need to set the path of the file have product catalog
+           file and the salse tax file
+
+        2. you can use the set_product_catalog_file_path(), set_sales_tax_file_path()
+           for the same
+    ''' 
     def __init__(self):
         self.product_catalog_file_path = ""
         self.sales_tax_file_path = ""
@@ -22,6 +31,23 @@ class STC:
         return self.sales_tax_file_path
 
     def validate(self):
+        """
+            checks and return the True or False on the basis
+            of following conditions
+
+            1. product_catalog_file_path and sales_tax_file_path
+               are set or not
+
+            2. these two file contain the valid headers or not
+        """
+        
+        if self.product_catalog_file_path == "" or self.sales_tax_file_path == "":
+            return False
+        else:
+            # checking if the headers are correct
+            productCatalogDf = pd.read_csv( self.product_catalog_file_path )
+            salesTaxDf = pd.read_csv("SalesTax.csv")
+            
         
         
 
@@ -117,21 +143,6 @@ if __name__ == "__main__":
 
     else:
         print("file dosen't exist")
-
-
-
-
-
-'''
-    file validations
-
-    
-    does file exist
-        |
-    does header are correct
-        |
-    does country name are repeated
-'''
 
 
 
