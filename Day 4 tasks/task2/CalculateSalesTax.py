@@ -3,135 +3,104 @@ import csv
 import os
 
 
-class STC:
+class SalseTaxCalculator:
 
-    def __init__(self):
-        self.product_catalog_file_path = ""
+
+    def __init__(self, product_catalog_file_path, sales_tax_file_path):
+        self.product_catalog_file_path = product_catalog_file_path
         self.sales_tax_file_path = ""
+
+        self.product_catalog_df = None
+        self.sales_tax_df = None
+
 
     def set_product_catalog_file_path(self, path):
         self.product_catalog_file_path = os.path.join(*path)
 
+
     def set_sales_tax_file_path(self, path):
         self.sales_tax_file_path = os.path.join(*path)
+
 
     def get_product_catalog_file_path(self):
         return self.product_catalog_file_path
 
+
     def get_sales_tax_file_path(self):
         return self.sales_tax_file_path
 
+
     def validate(self):
-        
-        
-
-
-
-# Global variables
-
-
-productCatalogDf = ""
-salesTaxDf = ""
-
-
-def uniqueNameChecker( nameList ):
-    return len(nameList) == len(set(nameList))
-
-def taxCalculation():
-    if uniqueNameChecker(salesTaxDf["Country"]):
-        with open("result.csv", "w", newline="") as csvFileObject:
-            thewritter = csv.writer(csvFileObject)
-
-            thewritter.writerow(["Product-Name", "Product-CostPrice", "Product-SalesTax", "Product-SalesTaxAmount", "Product-FinalPrice", "Country"])
-
-            salseTaxDfIndex = 0
-
-            while salseTaxDfIndex < len(salesTaxDf):
-                productCatalogDfIndex = 0
-                while productCatalogDfIndex < len(productCatalogDf):
-                    #print( type(salesTaxDf['SalseTaxInPercent'][salseTaxDfIndex]), " ", type(productCatalogDf['ProductCost'][productCatalogDfIndex]) )
-                    try:
-                        if( float(salesTaxDf['SalseTaxInPercent'][salseTaxDfIndex]) >= 0.0 and float(productCatalogDf['ProductCost'][productCatalogDfIndex])> 0.0):
-                            taxprice = (float(salesTaxDf['SalseTaxInPercent'][salseTaxDfIndex])* float(productCatalogDf['ProductCost'][productCatalogDfIndex]))/100
-
-                            salesprice = float(productCatalogDf['ProductCost'][productCatalogDfIndex])+taxprice
-                
-                            thewritter.writerow([productCatalogDf['ProductName'][productCatalogDfIndex], productCatalogDf['ProductCost'][productCatalogDfIndex], salesTaxDf['SalseTaxInPercent'][salseTaxDfIndex], taxprice, salesprice, salesTaxDf['Country'][salseTaxDfIndex]])
-                            
-                        else:
-                            print("input file contain invalid values")
-                  
-                            
-                    except ValueError:
-                        print("input file contain characters instead of values")
-                        break;
-                    except:
-                        print("invalid inputs")
-                        break
-
-                    finally:
-                        productCatalogDfIndex+=1
-
-                salseTaxDfIndex+=1
-    else:
-        print("country name repeated")
-            
-
-        
-
-    
-def headerNameValidator():
-    columnNames=["ProductName","ProductCost","SalseTaxInPercent","Country"]
-
-    for x in productCatalogDf:
-        if x not in columnNames:
+        if self.product_catalog_file_path == "" or self.sales_tax_file_path == "" :
             return False
-
-    for x in salesTaxDf:
-        if x not in columnNames:
-            return False 
-
-    
-    #print(productCatalogDf["ProductName"])
-    return True
-
-
-
-if __name__ == "__main__":
-    ProductCatalogFilePath = os.path.join(".","ProductCatalog.csv")
-    salesTaxFilePath = os.path.join(".","SalesTax.csv")
-
-
-    if os.path.exists(ProductCatalogFilePath) and os.path.exists(salesTaxFilePath):
-        print("file exist")
         
-        
-        productCatalogDf = pd.read_csv("ProductCatalog.csv")
-        salesTaxDf = pd.read_csv("SalesTax.csv")
-        
-        if headerNameValidator():
-            print("headers are valid")
-            taxCalculation()
         else:
-            print("headers are not valid")
+            self.product_catalog_df = pd.read_csv( self.product_catalog_file_path )
+            self.sales_tax_df = pd.read_csv( self.sales_tax_file_path )
+            
+            valid_column_name = ["ProductName","ProductCost","SalseTaxInPercent","Country"]
 
-    else:
-        print("file dosen't exist")
+            for column_name in self.product_catalog_df:
+                if column_name not in valid_column_name:
+                    return False
+
+            for column_name in self.sales_tax_df:
+                if column_name not in valid_column_name:
+                    return False
+
+            return True
+
+    def unique_name_check(self, name_list ):
+        return len( name_list ) == len( set(name_list) )
 
 
+    def calculate_tax( self ):
+        if self.validate() and self.unique_name_check(self.sales_tax_df["Country"]):
+            
+            with open("result.csv", "w", newline="") as csv_File_Object:
+                the_writter = csv.writer(csv_File_Object)
 
+                the_writter.writerow(["Product-Name", "Product-CostPrice", "Product-SalesTax", "Product-SalesTaxAmount", "Product-FinalPrice", "Country"])
 
+                sales_tax_df_index = 0
 
-'''
-    file validations
+                while sales_tax_df_index < len(self.sales_tax_df):
+                    product_catalog_df_index = 0
+                    
+                    while product_catalog_df_index < len(self.product_catalog_df):              
+                        try:
+                            if( float(self.sales_tax_df['SalseTaxInPercent'][sales_tax_df_index]) >= 0.0 and float(self.product_catalog_df['ProductCost'][product_catalog_df_index])> 0.0):
+                                tax_price = (float(self.sales_tax_df['SalseTaxInPercent'][sales_tax_df_index])* float(self.product_catalog_df['ProductCost'][product_catalog_df_index]))/100
 
+                                sales_price = float(self.product_catalog_df['ProductCost'][product_catalog_df_index])+tax_price
+                    
+                                the_writter.writerow([self.product_catalog_df['ProductName'][product_catalog_df_index], self.product_catalog_df['ProductCost'][product_catalog_df_index], self.sales_tax_df['SalseTaxInPercent'][sales_tax_df_index], tax_price, sales_price, self.sales_tax_df['Country'][sales_tax_df_index]])
+                                
+                            else:
+                                print("input file contain invalid values")
+                      
+                                
+                        except ValueError:
+                            print("input file contain characters instead of values")
+                            break
+                        except Exception as e:
+                            print(e)
+                            print("invalid inputs")
+                            break
+
+                        finally:
+                            product_catalog_df_index+=1
+
+                    sales_tax_df_index+=1
+            
+        else:
+            print("country name repeated")
+            
+        
+if __name__ == "__main__":
+
+    obj = SalseTaxCalculator()
+    obj.set_product_catalog_file_path(["." , "ProductCatalog.csv"])
+    obj.set_sales_tax_file_path(["." , "SalesTax.csv"])
+    obj.calculate_tax()
     
-    does file exist
-        |
-    does header are correct
-        |
-    does country name are repeated
-'''
-
-
-
