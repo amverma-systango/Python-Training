@@ -3,7 +3,27 @@ import csv
 import os
 
 
+class STC:
 
+    def __init__(self):
+        self.product_catalog_file_path = ""
+        self.sales_tax_file_path = ""
+
+    def set_product_catalog_file_path(self, path):
+        self.product_catalog_file_path = os.path.join(*path)
+
+    def set_sales_tax_file_path(self, path):
+        self.sales_tax_file_path = os.path.join(*path)
+
+    def get_product_catalog_file_path(self):
+        return self.product_catalog_file_path
+
+    def get_sales_tax_file_path(self):
+        return self.sales_tax_file_path
+
+    def validate(self):
+        
+        
 
 
 
